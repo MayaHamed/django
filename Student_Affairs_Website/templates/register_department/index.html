@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/main-style.css">
+    <link rel="stylesheet" href="../all-students/student.css">
+    <link rel="stylesheet" href="../style/all.min.css">
+    <link rel="stylesheet" href="./register-department.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width , initial-scale=1">
+    <title>Register Departments</title>
+</head>
+
+<body>
+    <nav>
+        <div class="container"><a href="../index.html"><img src="../imgs/6268894d1aafb4935ed1b6e685b213dc.png"
+                    alt=""></a>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../profile/profile.html">Profile</a></li>
+                <li class="services"><a href="#">Services</a>
+                    <div class="services-menu">
+                        <ul>
+                            <li><a href="../all-students/student.html">Students</a></li>
+                            <li><a href="../edit-students/edit.html">Edit Students</a></li>
+                            <li><a href="../register-department/register-department.html">Register Department</a></li>
+                            <li><a href="../add-student/addStudent.html">Add Student</a></li>
+                            <li><a href="#">Add Announcement</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="../instructions/Instructions.html">Instructions</a></li>
+                <li id="logout"><a>Logout</a></li>
+                <!-- <li><a href="../login/login.html">Login</a></li> -->
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Register Department</h1>
+        <div class="search">
+            <form>
+                <input type="text" placeholder="Search For Student By Name" id="search" class="name">
+                <div class="buttons">
+                    <button type="button" id="name">Search By Student Name</button>
+                    <button type="button" id="id">Search By Student ID</button>
+                </div>
+                <div class="departments">
+                    <ul>
+                        <li> <span class="menu">Departments</span> <i class="fa-solid fa-sort-down"></i>
+                            <ul class="drop-down">
+                                <li class="dep" id="AI">AI</li>
+                                <li class="dep" id="CS">CS</li>
+                                <li class="dep" id="DS">DS</li>
+                                <li class="dep" id="IS">IS</li>
+                                <li class="dep" id="IT">IT</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <select name="Departments">
+                    <label>Departments</label>
+                    <option value=" SelectDepartment">Select Department</option>
+                    <option value="IS">IS</option>
+                    <option value="CS">CS</option>
+                    <option value="AI">AI</option>
+                    <option value="DS">DS</option>
+                </select> -->
+                <!-- <input type="submit"> -->
+                <button type="button" id="submit">Submit</button>
+            </form>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Student ID</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody id="body">
+                <!-- <tr class="row">
+                    <td>Hamed Osama</td>
+                    <td>20200138</td>
+                    <td>General</td>
+                </tr>
+                <tr class="row">
+                    <td>Ahmed Mohamed</td>
+                    <td>20200048</td>
+                    <td>General</td>
+                </tr>
+                <tr class="row">
+                    <td>Maya Hamed </td>
+                    <td>20200417</td>
+                    <td>General</td>
+                </tr>
+                <tr class="row">
+                    <td>Malak Tamer</td>
+                    <td>20200858</td>
+                    <td>General</td>
+                </tr>
+                <tr class="row">
+                    <td>Ibrahim Ismail</td>
+                    <td>20200828</td>
+                    <td>General</td>
+                </tr>
+                <tr class="row">
+                    <td>Nada Mohamed</td>
+                    <td>20200591</td>
+                    <td>General</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <script src="../scripts/logout.js"></script>
+    <script src="./register.js"></script>
+</body>
+
+</html>

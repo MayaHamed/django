@@ -1,0 +1,25 @@
+/* Golabl rules */
+
+.head{
+    background-color: #e6f1bb;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+    margin-left: 150px;
+    margin-top: 10px;
+    margin-right: 150px;
+    border-radius:40px;
+    
+}
+
+
+.head1,.head2,.head3,.head4,.head5,.head6,.head7{
+    background-color: #94c4eb;
+    font-size: large;
+    padding: 25px;
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 15px;
+}

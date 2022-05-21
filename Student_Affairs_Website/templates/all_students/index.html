@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style/all.min.css">
+<link rel="stylesheet" href={%static "css/main/style.css"%}>
+<link rel="stylesheet" href={%static "css/all_students/style.css"%}>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;700;800&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <div class="container"><a href="../index.html"><img src="../imgs/6268894d1aafb4935ed1b6e685b213dc.png" alt=""></a>
+    <ul>
+        <li id="home"><a href="../index.html">Home</a></li>
+        <li id="profile"><a href="../profile/profile.html">Profile</a></li>
+        <li class="services" id="services"><a href="#">Services</a>
+        <div class="services-menu">
+            <ul>
+                <li><a href="../all-students/student.html">Students</a></li>
+                <li><a href="../edit-students/edit.html">Edit Students</a></li>
+                <li><a href="../register-department/register-department.html">Register Department</a></li>
+                <li><a href="../add-student/addStudent.html">Add Student</a></li>
+                <li><a href="#">Add Announcement</a></li>
+            </ul>
+          </div>
+        </li>
+        <li id="instructions"><a href="../instructions/Instructions.html">Instructions</a></li>
+        <!--li#login: a(href="../login/login.html") Login-->
+        <li id="logout"><a>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="students">
+    <div class="container">
+      <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>GPA</th>
+            <th>Gender</th>
+            <th>Level</th>
+            <th>Status</th>
+            <th>Department</th>
+            <th>E-mail</th>
+            <th>Date of Birth</th>
+            <th>Mobile Number</th>
+          </tr>
+        </thead>
+
+        <tbody class="body">
+        {% if students%}
+          {% for s in students%}
+          {% comment %} {%x = 10%} {% endcomment %}
+          {% comment %} {%print('1')%} {% endcomment %}
+          
+            <tr class="data0">
+            <td class="id0">{{ s.id }}</td>
+            <td class="name0">{{s.name}}</td>
+            <td class="gpa0">{{s.gpa}}</td>
+            <td class="gender0">{{ s.gender }}</td>
+            <td class="level0">{{ s.level}}</td>
+            <td class="status0 status" id="0">{{ s.status}}</td>
+            <td class="dep0">{{ s.Department }}</td>
+            <td class="email0">{{ s.email }}</td>
+            <td class="birth0">{{ s.date_of_birth }}</td>
+            <td class="number0">{{ s.mobile_number }}</td>
+          </tr>
+          {%endfor%}
+          {%endif%}
+        </tbody>
+    </table>
+    <div class="select-students">
+        <button class="active">Select Active</button>
+        <button class="notActive">Select Not Active</button>
+    </div>
+    <div class="show-all">
+        <button class="showAll">View All</button>
+    </div>
+    </div>
+</div>
+<script src={%static 'scripts/all_students/main.js'%}> </script>
+<script src="../scripts/logout.js"> </script>
+</body>
+
+</html>
