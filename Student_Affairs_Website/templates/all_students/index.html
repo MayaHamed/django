@@ -54,7 +54,7 @@
             {% endif %}
             <td class="dep{{s}}">{{ s.Department }}</td>
             <td class="email{{s}}">{{ s.email }}</td>
-            <td class="birth{{s}}">{{ s.date_of_birth }}</td>
+            <td class="birth{{s}}">{{ s.date_of_birth |date:"d/m/Y"}}</td>
             <td class="number{{s}}">{{ s.mobile_number }}</td>
           </tr>
           {%endfor%}

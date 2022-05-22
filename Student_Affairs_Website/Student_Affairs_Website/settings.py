@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'home',
     'edit_students',
     'all_students',
+    'login',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

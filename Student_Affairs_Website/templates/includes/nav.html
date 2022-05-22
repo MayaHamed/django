@@ -36,8 +36,10 @@
             <li id="instructions">
                 <a href="../instructions/Instructions.html">Instructions</a>
             </li>
-            <!--li#login: a(href="../login/login.html") Login-->
-            <li id="logout"><a>Logout</a></li>
+            <!-- li#login: a(href="../login/login.html") Login -->
+            <li id="login">
+                <a href="{% url 'login' %}">login</a>
+            </li>
         </ul>
     </div>
 </nav>
