@@ -16,7 +16,7 @@
 </head>
 
 <body>
-{% include "../includes/nav.html" %}
+  {% include "../includes/nav.html" %}
   <div class="students">
     <div class="container">
       <table>
@@ -41,7 +41,7 @@
           {% comment %} {%x = 10%} {% endcomment %}
           {% comment %} {%print('1')%} {% endcomment %}
 
-          <tr class="data0">
+          <tr class="data{{s}}">
             <td class="id{{s}} id">{{ s.id }}</td>
             <td class="name{{s}}">{{s.name}}</td>
             <td class="gpa{{s}}">{{s.gpa}}</td>

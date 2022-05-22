@@ -34,7 +34,7 @@ ids.forEach((id) => {
     i++;
     // console.log(1);
 });
-console.log(ids);
+// console.log(ids);
 active.forEach(() => {
     const obj = {
         name: document.querySelector(`.name${idsArr[c]}`).innerHTML,
