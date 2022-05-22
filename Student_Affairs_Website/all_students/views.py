@@ -6,6 +6,6 @@ from .models import Students
 def index(request):
     students = Students.objects.order_by('id')
     pass_db = {'students':students}
-    print(students[2])
+    print(students[0].status)
     return render(request,'all_students/index.html',context=pass_db)
     # return HttpResponse("hello world")

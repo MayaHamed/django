@@ -1,0 +1,24 @@
+<!-- {% load static %} -->
+
+<nav>
+    <div class="container"><a href="{% url 'home' %}"><img src="{ % static 'imgs/logo.png' % }" alt=""></a>
+        <ul>
+            <li id="home"><a href="{% url 'home' %}">Home</a></li>
+            <li id="profile"><a href="../profile/profile.html">Profile</a></li>
+            <li class="services" id="services"><a href="#">Services</a>
+                <div class="services-menu">
+                    <ul>
+                        <li><a href="{% url 'all students' %}">Students</a></li>
+                        <li><a href="../edit-students/edit.html">Edit Students</a></li>
+                        <li><a href="../register-department/register-department.html">Register Department</a></li>
+                        <li><a href="../add-student/addStudent.html">Add Student</a></li>
+                        <li><a href="#">Add Announcement</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="instructions"><a href="../instructions/Instructions.html">Instructions</a></li>
+            <!--li#login: a(href="../login/login.html") Login-->
+            <li id="logout"><a>Logout</a></li>
+        </ul>
+    </div>
+</nav>

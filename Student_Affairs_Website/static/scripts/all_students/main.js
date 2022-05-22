@@ -65,44 +65,48 @@ const btn = function () {
             this.className == 'active'
         ) {
             const id = el.id;
+            console.log(data[c].id);
             const temp = `
             <tr class="data${id}">
-            <td class="id${id}">${data[id].id}</td>
-            <td class="name${id}">${data[id].name}</td>
-            <td class="gpa${id}">${data[id].gpa}</td>
-            <td class="gender${id}">${data[id].gender}</td>
-            <td class="level${id}">${data[id].level}</td>
-            <td class="status${id} status" id="${id}">${data[id].status}</td>
-            <td class="dep${id}">${data[id].dep}</td>
-            <td class="email${id}">${data[id].email}</td>
-            <td class="birth${id}">${data[id].birth}</td>
-            <td class="number${id}">${data[id].number}</td>
+            
+            <td class="id${id}">${data[c].id}</td>
+            <td class="name${id}">${data[c].name}</td>
+            <td class="gpa${id}">${data[c].gpa}</td>
+            <td class="gender${id}">${data[c].gender}</td>
+            <td class="level${id}">${data[c].level}</td>
+            <td class="status${id} status" id="${id}">${data[c].status}</td>
+            <td class="dep${id}">${data[c].dep}</td>
+            <td class="email${id}">${data[c].email}</td>
+            <td class="birth${id}">${data[c].birth}</td>
+            <td class="number${id}">${data[c].number}</td>
             </tr>
             `;
             iner.push(temp);
         } else if (
-            el.innerHTML.toLocaleLowerCase() == 'notactive' &&
+            el.innerHTML.toLocaleLowerCase() == 'not active' &&
             this.className == 'notActive'
         ) {
             const id = el.id;
             const temp = `
             <tr class="data${id}">
-            <td class="id${id}">${data[id].id}</td>
-            <td class="name${id}">${data[id].name}</td>
-            <td class="gpa${id}">${data[id].gpa}</td>
-            <td class="gender${id}">${data[id].gender}</td>
-            <td class="level${id}">${data[id].level}</td>
-            <td class="status${id} status" id="${id}">${data[id].status}</td>
-            <td class="dep${id}">${data[id].dep}</td>
-            <td class="email${id}">${data[id].email}</td>
-            <td class="birth${id}">${data[id].birth}</td>
-            <td class="number${id}">${data[id].number}</td>
+            <td class="id${id}">${data[c].id}</td>
+            <td class="name${id}">${data[c].name}</td>
+            <td class="gpa${id}">${data[c].gpa}</td>
+            <td class="gender${id}">${data[c].gender}</td>
+            <td class="level${id}">${data[c].level}</td>
+            <td class="status${id} status" id="${id}">${data[c].status}</td>
+            <td class="dep${id}">${data[c].dep}</td>
+            <td class="email${id}">${data[c].email}</td>
+            <td class="birth${id}">${data[c].birth}</td>
+            <td class="number${id}">${data[c].number}</td>
             </tr>
             `;
             iner.push(temp);
         }
+        c++;
     });
     body.innerHTML = iner.join('');
+    c = 0;
 };
 viewAllBtn.addEventListener('click', () => {
     let arr = [];
