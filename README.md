@@ -1,4 +1,4 @@
 # django
 
 Try Demo at:
-  http://hamedosama.pythonanywhere.com/
+  http://hamedosama.pythonanywhere.com/home
