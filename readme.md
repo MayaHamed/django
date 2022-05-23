@@ -1,11 +1,4 @@
-na2s al rtl fl home page
+# django
 
-home ✔
-profile
-all students ✔
-edit students
-register department
-add student 
-instructions 
-login ✔
-logout ✔
+Try Demo at:
+  http://hamedosama.pythonanywhere.com/home
