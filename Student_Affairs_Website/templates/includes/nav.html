@@ -2,9 +2,7 @@
 
 <nav>
     <div class="container">
-        <a href="{% url 'home' %}"
-            ><img src="{% static "imgs/logo.png" %}" alt=""></a
-        >
+        <a href="{% url 'home' %}"><img src="{% static 'imgs/logo.png' %}" alt=""></a>
         <ul>
             <li id="home"><a href="{% url 'home' %}">Home</a></li>
             <li id="profile"><a href="../profile/profile.html">Profile</a></li>
@@ -14,20 +12,13 @@
                     <ul>
                         <li><a href="{% url 'all students' %}">Students</a></li>
                         <li>
-                            <a href="{% url 'edit students' %}"
-                                >Edit Students</a
-                            >
+                            <a href="{% url 'edit students' %}">Edit Students</a>
                         </li>
                         <li>
-                            <a
-                                href="../register-department/register-department.html"
-                                >Register Department</a
-                            >
+                            <a href="../register-department/register-department.html">Register Department</a>
                         </li>
                         <li>
-                            <a href="../add-student/addStudent.html"
-                                >Add Student</a
-                            >
+                            <a href="{% url 'add student' %}">Add Student</a>
                         </li>
                         <li><a href="#">Add Announcement</a></li>
                     </ul>
@@ -37,8 +28,8 @@
                 <a href="../instructions/Instructions.html">Instructions</a>
             </li>
             <!-- li#login: a(href="../login/login.html") Login -->
-            <li id="login">
-                <a href="{% url 'login' %}">login</a>
+            <li id="logout">
+                <a href="{% url 'logout' %}">Logout</a>
             </li>
         </ul>
     </div>

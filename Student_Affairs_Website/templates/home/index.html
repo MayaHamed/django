@@ -17,7 +17,11 @@
 </head>
 
 <body>
+    {% if user.is_authenticated %}
     {% include "../includes/nav.html" %}
+    {% else %}
+    {% include "../includes/navlock.html" %}
+    {% endif %}
     <div class="announcement">
         <div class="container">
             <div class="heading">

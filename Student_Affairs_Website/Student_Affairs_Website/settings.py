@@ -29,13 +29,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+# AUTH_USER_MODELS = 'login.User'
 # Application definition
 
 INSTALLED_APPS = [
     'home',
     'edit_students',
     'all_students',
+    'add_student',
     'login',
     'django.contrib.admin',
     'django.contrib.auth',
