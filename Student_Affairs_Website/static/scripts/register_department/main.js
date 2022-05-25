@@ -1,93 +1,117 @@
-let data = JSON.parse(localStorage.students);
-const  body = document.getElementById("body")
-const  submit = document.getElementById("submit")
-const departments = ["general",'ai','cs','ds','is','it'];
-if(localStorage.students){
-    let iner = [];
-    for(let i = 0 ; i < data.length ; i++){
-        const id = i;
-        const temp= `
-        <tr class="row"> 
-        <td>${data[id].name}</td>
-        <td>${data[id].id}</td>
-        <td>${data[id].dep}</td>
-        </tr>
-        `
-        iner.push(temp)
+const body = document.getElementById('body');
+const submit = document.getElementById('submit');
+const search = document.getElementById('search');
+const searchByName = document.getElementById('name');
+const searchById = document.getElementById('id');
+let row, department;
+const menu = document.querySelector('.menu');
+const dep = document.querySelectorAll('.dep');
+const xhttp = new XMLHttpRequest();
+xhttp.open('GET', 'data');
+xhttp.send();
+let data = '';
+xhttp.addEventListener('load', function () {
+    data = JSON.parse(xhttp.responseText);
+    for (let i = 0; i < data.length; i++) {
+        id = data[i].id;
+        if (data[i].status == true) {
+            data[i].status = 'Active';
+        } else data[i].status = 'Not Active';
+        body.innerHTML += `
+            <tr class="row"> 
+            <td class="name${i}">${data[i].name}</td>
+            <td class="id${i}">${data[i].id}</td>
+            <td class="dep${i}">${data[i].Department}</td>
+            </tr>`;
     }
-    body.innerHTML = iner.join('');
-}
-const  search = document.getElementById("search")
-const  searchByName = document.getElementById("name")
-const  searchById = document.getElementById("id")
-const  row = document.querySelectorAll(".row")
-const  menu = document.querySelector(".menu")
-const  dep = document.querySelectorAll(".dep")
-searchByName.addEventListener("click",()=>{
-    search.className = "name"
-    search.placeholder = "Search For Student By Name";
-})
-searchById.addEventListener("click",()=>{
-    search.className = "id"
-    search.placeholder = "Search For Student By ID";
-})
-row.forEach((e)=>{
-    e.addEventListener("click",()=>{
-        row.forEach(e=>{e.classList.remove("active")})
-        e.classList.add("active")
-    })
-})
-dep.forEach((e)=>{
-    e.addEventListener("click",()=>{
+    row = document.querySelectorAll('.row');
+    selectStudent();
+});
+searchByName.addEventListener('click', () => {
+    search.className = 'name';
+    search.placeholder = 'Search For Student By Name';
+});
+searchById.addEventListener('click', () => {
+    search.className = 'id';
+    search.placeholder = 'Search For Student By ID';
+});
+
+dep.forEach((e) => {
+    e.addEventListener('click', () => {
         menu.innerHTML = e.id;
-    })
-})
-search.addEventListener("keyup",()=>{
-    for(let i = 0 ; i < data.length ;i++){
-        body.innerHTML = "";
-    }
-    for(let i = 0 ; i < data.length ;i++){
-        if(data[i].name.toLowerCase().includes(search.value.toLowerCase()) && search.className == "name"){
+    });
+});
+
+search.addEventListener('keyup', () => {
+    body.innerHTML = '';
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].name.toLowerCase().includes(search.value.toLowerCase()) && search.className == 'name') {
+            let row = `<tr class="row" > 
+            <td class="name${i}">${data[i].name}</td>
+            <td class="id${i}">${data[i].id}</td>
+            <td class="dep${i}">${data[i].Department}</td>
+            </tr>`;
+            body.innerHTML += row;
+        } else if (String(data[i].id).includes(search.value) && search.className == 'id') {
             let row = `<tr class="row"> 
-            <td>${data[i].name}</td>
-            <td>${data[i].id}</td>
-            <td>${data[i].dep}</td>
-            </tr>`
-            body.innerHTML +=row;
-        }else if(data[i].id.includes(search.value) && search.className == "id"){
-            let row = `<tr class="row"> 
-            <td>${data[i].name}</td>
-            <td>${data[i].id}</td>
-            <td>${data[i].dep}</td>
-            </tr>`
-            body.innerHTML +=row;
+            <td class="name${i}">${data[i].name}</td>
+            <td class="id${i}">${data[i].id}</td>
+            <td class="dep${i}">${data[i].Department}</td>
+            </tr>`;
+            body.innerHTML += row;
         }
     }
-})
-submit.addEventListener("click",()=>{
-    const student = document.querySelector(".active")
-    const id = student.children[1].innerHTML
+    row = document.querySelectorAll('.row');
+    selectStudent();
+});
+
+submit.addEventListener('click', () => {
+    if (menu.innerHTML.toLowerCase() === 'departments') {
+        alert('Please Choose Department First');
+        return;
+    }
+    const student = document.querySelector('.active');
+    if (student == null) {
+        alert('Please Choose Student');
+        return;
+    }
+    const id = student.children[1].innerHTML;
     let valid = true;
-    if(student != null && departments.includes(menu.innerHTML.toLowerCase())){
+    if (student != null && menu.innerHTML.toLowerCase() !== 'departments') {
         for (let i = 0; i < data.length; i++) {
-            if(data[i].id == id){
-                if(+data[i].gpa <= 3){
+            if (data[i].id == id) {
+                if (+data[i].gpa < 3) {
                     valid = false;
-                    alert("GPA Is Less Than 3")
+                    alert('GPA Is Less Than 3');
                 }
             }
-            if(data[i].id == id && valid){
-                data[i].dep = menu.innerHTML;
-                localStorage.students = JSON.stringify(data);
-                alert("Department Added Successfully")
-                location.reload();
+            if (data[i].id == id && valid) {
+                alert('Department Added Successfully');
+                csrftoken = document.cookie.split('csrftoken=').join('');
+                const req = new XMLHttpRequest();
+                req.open('POST', 'assign-student', true);
+                req.setRequestHeader('X-CSRFToken', csrftoken);
+                req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                req.send(`id=${id}&department=${menu.innerHTML}`);
+                menu.innerHTML = 'Departments';
+                student.innerHTML = '';
+                data.splice(i, 1);
+                // data[i].Department = menu.innerHTML;
+                // localStorage.students = JSON.stringify(data);
+                // location.reload();
             }
         }
     }
-    if(!departments.includes(menu.innerHTML.toLowerCase())){
-        alert("Please Choose Department First")
-    }
-    if(student == null){
-        alert("Please Choose Student")
-    }
-})
+});
+
+// select student
+const selectStudent = () => {
+    row.forEach((e) => {
+        e.addEventListener('click', () => {
+            row.forEach((e) => {
+                e.classList.remove('active');
+            });
+            e.classList.add('active');
+        });
+    });
+};

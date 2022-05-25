@@ -1,4 +1,4 @@
-.students .container .search input{
+.students .container .search input {
     width: 80%;
     height: 50px;
     padding-left: 10px;
@@ -14,9 +14,26 @@
     transform: translateX(-50%);
 }
 
-@media (max-width:1200px){
+@media (max-width: 1200px) {
     .students table th,
-    .students table td{
-        padding: 15px 5px;
+    .students table td {
+        padding: 15px 14px;
     }
+}
+.students table th,
+.students table td {
+    padding: 15px 6px;
+}
+.editing {
+    /* background-color: red; */
+    /* width: 50px; */
+    max-width: 80px;
+}
+input {
+    padding: 5px 3px;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+}
+i {
+    cursor: pointer;
 }

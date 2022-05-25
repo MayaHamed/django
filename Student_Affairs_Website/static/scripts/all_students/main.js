@@ -1,115 +1,89 @@
-let data = [];
 const body = document.querySelector('.body');
-let active = document.querySelectorAll('.status');
-let c = 0;
-// console.log(1);
-// if(localStorage.students){
-//     let iner = [];
-//     data = JSON.parse(localStorage.students);
-//     for(let i = 0 ; i < data.length ; i++){
-//         const id = i;
-//         const temp= `
-//         <tr class="data${id}">
-//         <td class="id${id}" >${data[id].id}</td>
-//         <td class="name${id}">${data[id].name}</td>
-//         <td class="gpa${id}">${data[id].gpa}</td>
-//         <td class="gender${id}">${data[id].gender}</td>
-//         <td class="level${id}">${data[id].level}</td>
-//         <td class="status${id} status" id="${id}">${data[id].status}</td>
-//         <td class="dep${id}">${data[id].dep}</td>
-//         <td class="email${id}">${data[id].email}</td>
-//         <td class="birth${id}">${data[id].birth}</td>
-//         <td class="number${id}">${data[id].number}</td>
-//         </tr>
-//         `
-//         iner.push(temp)
-//     }
-//     body.innerHTML = iner.join('');
-// }
-const ids = document.querySelectorAll('.id');
-let i = 0;
-let idsArr = [];
-ids.forEach((id) => {
-    idsArr[i] = id.innerHTML;
-    i++;
-    // console.log(1);
-});
-// console.log(ids);
-active.forEach(() => {
-    const obj = {
-        name: document.querySelector(`.name${idsArr[c]}`).innerHTML,
-        id: document.querySelector(`.id${idsArr[c]}`).innerHTML,
-        gpa: document.querySelector(`.gpa${idsArr[c]}`).innerHTML,
-        gender: document.querySelector(`.gender${idsArr[c]}`).innerHTML,
-        level: document.querySelector(`.level${idsArr[c]}`).innerHTML,
-        status: document.querySelector(`.status${idsArr[c]}`).innerHTML,
-        dep: document.querySelector(`.dep${idsArr[c]}`).innerHTML,
-        email: document.querySelector(`.email${idsArr[c]}`).innerHTML,
-        birth: document.querySelector(`.birth${idsArr[c]}`).innerHTML,
-        number: document.querySelector(`.number${idsArr[c]}`).innerHTML,
-    };
-    data.push(obj);
-    c++;
-});
-localStorage.setItem('students', JSON.stringify(data));
-c = 0;
-active = document.querySelectorAll('.status');
 const activeBtn = document.querySelector('.active');
 const notActiveBtn = document.querySelector('.notActive');
 const viewAllBtn = document.querySelector('.showAll');
+let data = '';
+let pre = '';
+// setInterval(() => {
+const xhttp = new XMLHttpRequest();
+body.innerHTML = '';
+xhttp.open('GET', 'data');
+xhttp.send();
+xhttp.addEventListener('load', function () {
+    data = JSON.parse(xhttp.responseText);
+    for (let i = 0; i < data.length; i++) {
+        id = data[i].id;
+        if (data[i].status == true) {
+            data[i].status = 'Active';
+        } else data[i].status = 'Not Active';
+        body.innerHTML += `
+                <tr class="data${i}"> 
+                <td class="id${i}">${data[i].id}</td>
+                <td class="name${i}">${data[i].name}</td>
+                <td class="gpa${i}">${data[i].gpa}</td>
+                <td class="gender${i}">${data[i].gender}</td>
+                <td class="level${i}">${data[i].level}</td>
+                <td class="status${i} status" id="${i}">${data[i].status}</td>
+                <td class="dep${i}">${data[i].Department}</td>
+                <td class="email${i}">${data[i].email}</td>
+                <td class="birth${i}">${data[i].date_of_birth}</td>
+                <td class="number${i}">${data[i].mobile_number}</td>
+                </tr>`;
+    }
+});
+// }, 10000);
+
+let c = 0;
 const btn = function () {
-    let iner = [];
-    active.forEach((el) => {
+    let inner = [];
+    data.forEach((el) => {
         if (
-            el.innerHTML.toLocaleLowerCase() == 'active' &&
+            el.status.toLocaleLowerCase() == 'active' &&
             this.className == 'active'
         ) {
-            const id = el.id;
             console.log(data[c].id);
             const temp = `
-            <tr class="data${id}">
-            
-            <td class="id${id}">${data[c].id}</td>
-            <td class="name${id}">${data[c].name}</td>
-            <td class="gpa${id}">${data[c].gpa}</td>
-            <td class="gender${id}">${data[c].gender}</td>
-            <td class="level${id}">${data[c].level}</td>
-            <td class="status${id} status" id="${id}">${data[c].status}</td>
-            <td class="dep${id}">${data[c].dep}</td>
-            <td class="email${id}">${data[c].email}</td>
-            <td class="birth${id}">${data[c].birth}</td>
-            <td class="number${id}">${data[c].number}</td>
+            <tr class="data${c}">
+            <td class="id${c}">${data[c].id}</td>
+            <td class="name${c}">${data[c].name}</td>
+            <td class="gpa${c}">${data[c].gpa}</td>
+            <td class="gender${c}">${data[c].gender}</td>
+            <td class="level${c}">${data[c].level}</td>
+            <td class="status${c} status" id="${c}">${data[c].status}</td>
+            <td class="dep${c}">${data[c].Department}</td>
+            <td class="email${c}">${data[c].email}</td>
+            <td class="birth${c}">${data[c].date_of_birth}</td>
+            <td class="number${c}">${data[c].mobile_number}</td>
             </tr>
             `;
-            iner.push(temp);
+            inner.push(temp);
         } else if (
-            el.innerHTML.toLocaleLowerCase() == 'not active' &&
+            el.status.toLocaleLowerCase() == 'not active' &&
             this.className == 'notActive'
         ) {
-            const id = el.id;
             const temp = `
-            <tr class="data${id}">
-            <td class="id${id}">${data[c].id}</td>
-            <td class="name${id}">${data[c].name}</td>
-            <td class="gpa${id}">${data[c].gpa}</td>
-            <td class="gender${id}">${data[c].gender}</td>
-            <td class="level${id}">${data[c].level}</td>
-            <td class="status${id} status" id="${id}">${data[c].status}</td>
-            <td class="dep${id}">${data[c].dep}</td>
-            <td class="email${id}">${data[c].email}</td>
-            <td class="birth${id}">${data[c].birth}</td>
-            <td class="number${id}">${data[c].number}</td>
+            <tr class="data${c}">
+            <td class="id${c}">${data[c].id}</td>
+            <td class="name${c}">${data[c].name}</td>
+            <td class="gpa${c}">${data[c].gpa}</td>
+            <td class="gender${c}">${data[c].gender}</td>
+            <td class="level${c}">${data[c].level}</td>
+            <td class="status${c} status" id="${c}">${data[c].status}</td>
+            <td class="dep${c}">${data[c].Department}</td>
+            <td class="email${c}">${data[c].email}</td>
+            <td class="birth${c}">${data[c].date_of_birth}</td>
+            <td class="number${c}">${data[c].mobile_number}</td>
             </tr>
             `;
-            iner.push(temp);
+            inner.push(temp);
         }
         c++;
     });
-    body.innerHTML = iner.join('');
+    body.innerHTML = inner.join('');
     c = 0;
 };
 viewAllBtn.addEventListener('click', () => {
-    let arr = [];
+    body.innerHTML = '';
     for (let i = 0; i < data.length; i++) {
         const temp = `
         <tr class="data${i}">
@@ -119,15 +93,14 @@ viewAllBtn.addEventListener('click', () => {
         <td class="gender${i}">${data[i].gender}</td>
         <td class="level${i}">${data[i].level}</td>
         <td class="status${i} status" id="${i}">${data[i].status}</td>
-        <td class="dep${i}">${data[i].dep}</td>
+        <td class="dep${i}">${data[i].Department}</td>
         <td class="email${i}">${data[i].email}</td>
-        <td class="birth${i}">${data[i].birth}</td>
-        <td class="number${i}">${data[i].number}</td>
+        <td class="birth${i}">${data[i].date_of_birth}</td>
+        <td class="number${i}">${data[i].mobile_number}</td>
         </tr>
         `;
-        arr.push(temp);
+        body.innerHTML += temp;
     }
-    body.innerHTML = arr.join('');
 });
 activeBtn.addEventListener('click', btn);
 notActiveBtn.addEventListener('click', btn);

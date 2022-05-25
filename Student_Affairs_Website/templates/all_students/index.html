@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;700;800&display=swap" rel="stylesheet">
-  <title>Document</title>
+  <title>All Students</title>
 </head>
 
 <body>
@@ -34,31 +34,7 @@
             <th>Mobile Number</th>
           </tr>
         </thead>
-
         <tbody class="body">
-          {% if students%}
-          {% for s in students%}
-          {% comment %} {%x = 10%} {% endcomment %}
-          {% comment %} {%print('1')%} {% endcomment %}
-
-          <tr class="data{{s}}">
-            <td class="id{{s}} id">{{ s.id }}</td>
-            <td class="name{{s}}">{{s.name}}</td>
-            <td class="gpa{{s}}">{{s.gpa}}</td>
-            <td class="gender{{s}}">{{ s.gender }}</td>
-            <td class="level{{s}}">{{ s.level}}</td>
-            {% if s.status == True %}
-            <td class="status{{s}} status" id={{s}}>Active</td>
-            {% else %}
-            <td class="status{{s}} status" id={{s}}>Not Active</td>
-            {% endif %}
-            <td class="dep{{s}}">{{ s.Department }}</td>
-            <td class="email{{s}}">{{ s.email }}</td>
-            <td class="birth{{s}}">{{ s.date_of_birth |date:"d/m/Y"}}</td>
-            <td class="number{{s}}">{{ s.mobile_number }}</td>
-          </tr>
-          {%endfor%}
-          {%endif%}
         </tbody>
       </table>
       <div class="select-students">
@@ -70,8 +46,9 @@
       </div>
     </div>
   </div>
+  <script>
+  </script>
   <script src={%static 'scripts/all_students/main.js' %}> </script>
-  <!-- <script src="../scripts/logout.js"> </script> -->
 </body>
 
 </html>
